@@ -1,0 +1,22 @@
+"Phrases"
+{
+	"Reattempt connection"
+	{
+		"en"			"Error: Reattempt connection"
+	}
+	"Banned for"
+	{
+		"#format"		"{1:s}"
+		"en"			"You have been Banned for {1}"
+	}
+	"Banned Length"
+	{
+		"#format"		"{1:s},{2:d}"
+		"en"			"[MYBans] User {1} has been banned for {2} minutes"
+	}
+	"UnBanned"
+	{
+		"#format"		"{1:s}"
+		"en"			"[MYBans] User {1} has been unbanned"
+	}
+}
