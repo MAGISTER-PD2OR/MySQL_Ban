@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 $lang = array();
 
@@ -9,7 +9,8 @@ $lang['STEAMID_PLAYERS'] = 'SteamID :';
 $lang['NAME_PLAYERS'] = 'Nom du joueur :';
 $lang['BAN_REASON'] = 'Raison du Ban :';
 $lang['BANNED_BY'] = 'Banned par :';
-$lang['LENGTH_BAN'] = 'Dur�e du Ban :';
-$lang['TIME_PLAYER'] = 'Time :';
-
+$lang['LENGTH_BAN'] = 'Durée du Ban :';
+$lang['TIME_PLAYER'] = 'Heure du Ban :';
+$lang['PAGE_PREVIOUS'] = 'Page Précédente';
+$lang['PAGE_NEXT'] = 'Page Suivante';
 ?>

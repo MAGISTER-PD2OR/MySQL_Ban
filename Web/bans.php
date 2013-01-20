@@ -28,6 +28,7 @@
 
     </head>
     <body>
+	<div align="center">
 	<div id="languages" style="text-align: center;">
 	<a href="bans.php?lang=en"><img src="images/en.png" /></a>
 	<a href="bans.php?lang=fr"><img src="images/fr.png" /></a>
@@ -41,7 +42,7 @@
 				echo $lang['NO_PLAYERS'];
             }else{
         ?>
-        <table id="table-b">
+        <table id="table-b" style="text-align: center;">
             <thead>
                 <tr>
                     <th scope="col"><?php echo $lang['STEAMID_PLAYERS']; ?></th>
@@ -57,20 +58,20 @@
                 <tr>
                     <td colspan="5">
                     <?php
-                        if($pageResults>$config['perpage']){
-                            $pageUrl = '?page=';
-                            if($currentPage>1){
-                                echo '<a href="',$pageUrl,($currentPage-1),'">Previous</a>&nbsp;';
-                            }
-                            $totalPages = ceil($pageResults/$config['perpage']);
-                            for($i=1;$i<=$totalPages;++$i){
-                                echo '<a href="',$pageUrl,$i,'">',$i,'</a>&nbsp;';
-                            }
-                            if($currentPage<$totalPages){
-                                echo '<a href="',$pageUrl,($currentPage+1),'">Next</a>&nbsp;';
-                            }
-                        }
-                    ?>
+					  if($pageResults>$config['perpage']){
+						$pageUrl = '?page=';
+						if($currentPage>1){
+							  echo "<a href=\"".$pageUrl.($currentPage-1)."\">{$lang['PAGE_PREVIOUS']}</a>&nbsp;";
+						}
+						$totalPages = ceil($pageResults/$config['perpage']);
+						for($i=1;$i<=$totalPages;++$i){
+							  echo '<a href="',$pageUrl,$i,'">',$i,'</a>&nbsp;';
+						}
+						if($currentPage<$totalPages){
+							  echo "<a href=\"".$pageUrl.($currentPage+1)."\">{$lang['PAGE_NEXT']}</a>&nbsp;";
+						}
+					  }
+					?>
                     </td>
                     <td class="tfoot">&nbsp;</td>
                 </tr>
@@ -82,5 +83,6 @@
                 echo '</table>';
             }
         ?>
-    </body>
+    </div>
+	</body>
 </html>

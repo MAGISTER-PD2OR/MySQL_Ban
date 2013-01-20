@@ -11,5 +11,6 @@ $lang['BAN_REASON'] = 'Ban Reason:';
 $lang['BANNED_BY'] = 'Banned By:';
 $lang['LENGTH_BAN'] = 'Ban Length:';
 $lang['TIME_PLAYER'] = 'Time:';
-
+$lang['PAGE_PREVIOUS'] = 'Previous';
+$lang['PAGE_NEXT'] = 'Next';
 ?>

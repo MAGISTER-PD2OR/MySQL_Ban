@@ -3,6 +3,7 @@ body {
 	font-family: "Verdana", Trebuchet MS, sans-serif;
 	font-size: 16px;
 	color: #CCCCCC;
+	text-align: center;
 }
 
 #page-bg {
@@ -15,8 +16,8 @@ body {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
 	margin: 45px;
-	width: 480px;
-	text-align: left;
+	width: auto; /*480px*/
+	text-align: center;
 	border-collapse: collapse;
 	border: 1px solid #69c;
 }
@@ -46,7 +47,7 @@ body {
 tfoot{
 	display: table-footer-group;
 	border-color: inherit;
-	text-align: left;
+	text-align: center; /*left*/
 }
 
 #languages {
