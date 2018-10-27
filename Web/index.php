@@ -2,21 +2,19 @@
     
     $config    =    array(
         'host'        =>    'localhost',        //Database host
-        'username'    =>    'username',        //Database username
-        'password'    =>    'password',        //Database password
-        'dbname'    =>    'database',        //Database name
+        'username'    =>    'root',        //Database username
+        'password'    =>    'your-pw',        //Database password
+        'dbname'    =>    'there-db',        //Database name
         
         'perpage'    =>    20,                    //Amount of bans to show per page
     );
     
-    //---------
-    
-    mysql_connect($config['host'], $config['username'], $config['password']) or die('Couldn\'t connect to the database.');
-    mysql_select_db($config['dbname']) or die('Couldn\'t select the database.');
-    
+    $link = mysqli_connect($config['host'], $config['username'], $config['password'], $config['dbname']);
+	mysqli_query($link, 'set player_name UTF-8');
+	
     $currentPage = empty($_GET['page'])||!is_numeric($_GET['page'])||$_GET['page']<1?1:(int)$_GET['page'];
-    $query = mysql_query('SELECT * FROM `my_bans` ORDER BY `id` DESC LIMIT '.(($currentPage-1)*$config['perpage']).','.$config['perpage']);
-    $pageResults = mysql_num_rows(mysql_query('SELECT * FROM `my_bans`'));
+    $query = mysqli_query($link, 'SELECT * FROM `my_bans` ORDER BY `id` DESC LIMIT '.(($currentPage-1)*$config['perpage']).','.$config['perpage']);
+    $pageResults = mysqli_num_rows(mysqli_query($link, 'SELECT * FROM `my_bans`'));
 	include_once 'common.php';
 ?>
 <!DOCTYPE html>
@@ -30,14 +28,14 @@
     <body>
 	<div align="center">
 	<div id="languages" style="text-align: center;">
-	<a href="bans.php?lang=en"><img src="images/en.png" /></a>
-	<a href="bans.php?lang=fr"><img src="images/fr.png" /></a>
-	<a href="bans.php?lang=de"><img src="images/de.png" /></a>
-	<a href="bans.php?lang=es"><img src="images/es.png" /></a>
-	<a href="bans.php?lang=ru"><img src="images/ru.png" /></a>
+	<a href="index.php?lang=en"><img src="images/en.png" /></a>
+	<a href="index.php?lang=fr"><img src="images/fr.png" /></a>
+	<a href="index.php?lang=de"><img src="images/de.png" /></a>
+	<a href="index.php?lang=es"><img src="images/es.png" /></a>
+	<a href="index.php?lang=ru"><img src="images/ru.png" /></a>
 </div>
         <?php
-            if(mysql_num_rows($query) == 0){
+            if(mysqli_num_rows($query) == 0){
                 //echo 'No players currently on the banlist...';
 				echo $lang['NO_PLAYERS'];
             }else{
@@ -77,7 +75,7 @@
                 </tr>
             </tfoot>
         <?php
-                while($row = mysql_fetch_assoc($query)){
+                while($row = mysqli_fetch_assoc($query)){
                     echo '<tr><td>',$row['steam_id'],'</td><td>',htmlentities($row['player_name'], ENT_QUOTES, "UTF-8"),'</td><td>',htmlentities($row['ban_reason']),'</td><td>',htmlentities($row['banned_by'], ENT_QUOTES, "UTF-8"),'</td><td>',$row['ban_length'],'</td><td>',$row['timestamp'],'</td></tr>';
                 }
                 echo '</table>';
